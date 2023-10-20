@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Algorithmic Botany</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+    <script>
+      "use strict";
+      const canvasWidth = 700,
+        canvasHeight = 700;
+      let ctx;
+      const fps = 120;
+      let n = 0; // Keeps track of the number of circles we draw
+      let divergence = 137.3;
+      const c = 6; // 4, 6, 8 also work
+
+      // Values you can mess with to get diff designs is divergence(but carefully), FPS and c
+
+      window.onload = init;
+
+      function init() {
+        ctx = canvas.getContext("2d");
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+        ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+        loop();
+      }
+
+      function loop() {
+        setTimeout(loop, 1000 / fps);
+
+        // each frame draw a new dot
+        // `a` is the angle
+        // `r` is the radius from the center (e.g. "Pole") of the flower
+        // `c` is the "padding/spacing" between the dots
+        let a = n * dtr(divergence);
+        let r = c * Math.sqrt(n);
+
+        // now calculate the `x` and `y`
+        let x = r * Math.cos(a) + canvasWidth / 2;
+        let y = r * Math.sin(a) + canvasHeight / 2;
+
+        // let color = `rgb(${n % 256},0,255)`;
+
+        //let aDegrees = (n * divergence) % 256;
+        //let color = `rgb(${aDegrees},0,255)`;
+
+        let aDegrees = (n * divergence) % 361;
+        let color = `hsl(${aDegrees},100%,50%)`;
+        drawCircle(ctx, x, y, 2, color);
+        if (n == 5) {
+          divergence += 0.2;
+        }
+
+        if (n == 200) {
+          divergence += 0.1;
+        }
+
+        if (n == 350) {
+          divergence -= 0.1;
+        }
+
+        if (n == 600) {
+          divergence += 0.1;
+        }
+        if (n == 950) {
+          divergence -= 0.1;
+        }
+
+        if (n == 1400) {
+          divergence += 0.1;
+        }
+
+        if (n == 2000) {
+          divergence -= 0.1;
+        }
+        if (n == 3000) {
+          divergence += 0.1;
+        }
+        if (n == 4000) {
+          divergence -= 0.1;
+        }
+        if (n == 5000) {
+          divergence += 0.1;
+        }
+        if (n == 6000) {
+          divergence -= 0.1;
+        }
+        if (n == 7000) {
+          divergence += 0.1;
+        }
+        if (n == 8000) {
+          divergence -= 0.1;
+        }
+        if (n == 9000) {
+          divergence += 0.1;
+        }
+        if (n == 10000) {
+          divergence -= 0.1;
+        }
+        if (n == 11000) {
+          divergence += 0.1;
+        }
+        if (n == 12000) {
+          divergence -= 0.1;
+        }
+        if (n == 13000) {
+          divergence += 0.1;
+        }
+        if (n == 14000) {
+          divergence -= 0.1;
+        }
+        if (n == 15000) {
+          divergence += 0.1;
+        }
+        if (n == 16000) {
+          divergence -= 0.1;
+        }
+        if (n == 17000) {
+          divergence += 0.1;
+        }
+        n++;
+      }
+
+      // helpers
+      function dtr(degrees) {
+        return degrees * (Math.PI / 180);
+      }
+
+      function drawCircle(ctx, x, y, radius, color) {
+        ctx.save();
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      }
+    </script>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+  </body>
+</html>

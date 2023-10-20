@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" class="has-background-black">
+  <head>
+    <meta charset="utf-8" />
+    <title>Audio Visualizer</title>
+    <link href="styles/default-styles.css" type="text/css" rel="stylesheet" />
+    <script src="./src/appLoader.js" type="module"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+  </head>
+
+  <body id="app-body">
+    <p2-nav data-page="app"></p2-nav>
+    <main>
+      <canvas width="900" height="400"></canvas>
+
+      <div id="controls">
+        <div class="userControls">
+          <button
+            class="button is-success"
+            id="playButton"
+            data-playing="no"
+          ></button>
+          <button class="button is-warning" id="fsButton">Full Screen</button>
+
+          <label
+            >Track:
+            <select id="trackSelect">
+              <option value="media/Hucci-Vision.mp3" selected>
+                HUCCI x Dom Sebastian - Vision
+              </option>
+              <option value="media/The Picard Song.mp3">The Picard Song</option>
+              <option value="media/imagine-dragons-monster-lyrics.mp3">
+                Imagine Dragons - Monster
+              </option>
+              <option value="media/James Bay - Let It Go (Severo Remix).mp3">
+                James Bay - Let It Go (Severo Remix)
+              </option>
+              <option value="media/The Strumbellas - Spirits.mp3">
+                The Strumbellas - Spirits
+              </option>
+            </select>
+          </label>
+        </div>
+
+        <div class="userControls">
+          Volume:
+          <input
+            type="range"
+            id="volumeSlider"
+            min="0"
+            max="2"
+            value="1"
+            step="0.01"
+          />
+          <span id="volumeLabel">???</span>
+          <audio controls id="selectedTrack"></audio>
+        </div>
+        <div class="userControls">
+          <span
+            ><input type="checkbox" id="gradientCB" /><label for="gradientCB"
+              >Show Gradient</label
+            ></span
+          >
+          <span
+            ><input type="checkbox" id="barsCB" /><label for="barsCB"
+              >Show Bars</label
+            ></span
+          >
+          <span
+            ><input type="checkbox" id="circlesCB" /><label for="circlesCB"
+              >Show Circles</label
+            ></span
+          >
+
+          <span
+            ><input type="checkbox" id="invertCB" /><label for="invertCB"
+              >Invert Color</label
+            ></span
+          >
+
+          <span
+            ><input type="checkbox" id="lineCB" /><label for="lineCB"
+              >Show Line</label
+            ></span
+          >
+          <span
+            ><input type="checkbox" id="circleBarCB" /><label for="circleBarCB"
+              >Show Circle Bars</label
+            ></span
+          >
+        </div>
+        <div class="userControls">
+          <label
+            >Line Color:
+            <select id="lineStrokeSelect">
+              <option value="red">Red</option>
+              <option value="blue">Blue</option>
+              <option value="black">Black</option>
+              <option value="white">White</option>
+              <option value="cyan">Cyan</option>
+              <option value="green">Green</option>
+              <option value="dodgerblue">Dodger Blue</option>
+              <option value="chartreuse">Chartreuse</option>
+              <option value="fuchsia">Fuchsia</option>
+              <option value="yellow">Yellow</option>
+              <option value="gold">Gold</option>
+              <option value="indigo">Indigo</option>
+              <option value="lime">Lime</option>
+              <option value="magenta">Magenta</option>
+
+              <option value="deeppink">Deep Pink</option>
+              <option value="DarkSalmon">Dark Salmon</option>
+              <option value="DeepSkyBlue">Deep Sky Blue</option>
+              <option value="HotPink">Hot Pink</option>
+              <option value="OrangeRed">Orange Red</option>
+              <option value="Purple">Purple</option>
+              <option value="RoyalBlue">Royal Blue</option>
+              <option value="Violet">Violet</option>
+
+              <option disabled>-----Special Gradients-----</option>
+              <option value="linearGradient">Rainbow Linear Gradient</option>
+              <option value="radialGradient">Rainbow Radial Gradient</option>
+
+              <option disabled>-----Linear Gradients-----</option>
+              <option value="black-white">Black and White</option>
+              <option value="white-black">White and Black</option>
+              <option value="black-red">Black and Red</option>
+              <option value="black-yellow">Black and Yellow</option>
+              <option selected value="green-lime">Green and Lime</option>
+              <option value="blue-cyan">Blue and Cyan</option>
+            </select>
+          </label>
+          <label
+            >Bar Color:
+            <select id="barStrokeSelect">
+              <option value="red">Red</option>
+              <option value="blue">Blue</option>
+              <option selected value="black">Black</option>
+              <option value="white">White</option>
+              <option value="cyan">Cyan</option>
+              <option value="green">Green</option>
+              <option value="dodgerblue">Dodger Blue</option>
+              <option value="chartreuse">Chartreuse</option>
+              <option value="fuchsia">Fuchsia</option>
+              <option value="yellow">Yellow</option>
+              <option value="gold">Gold</option>
+              <option value="indigo">Indigo</option>
+              <option value="lime">Lime</option>
+              <option value="magenta">Magenta</option>
+
+              <option value="deeppink">Deep Pink</option>
+              <option value="DarkSalmon">Dark Salmon</option>
+              <option value="DeepSkyBlue">Deep Sky Blue</option>
+              <option value="HotPink">Hot Pink</option>
+              <option value="OrangeRed">Orange Red</option>
+              <option value="Purple">Purple</option>
+              <option value="RoyalBlue">Royal Blue</option>
+              <option value="Violet">Violet</option>
+
+              <option disabled>-----Special Gradients-----</option>
+              <option value="linearGradient">Rainbow Linear Gradient</option>
+              <option value="radialGradient">Rainbow Radial Gradient</option>
+
+              <option disabled>-----Linear Gradients-----</option>
+              <option value="black-white">Black and White</option>
+              <option value="white-black">White and Black</option>
+              <option value="black-red">Black and Red</option>
+              <option value="black-yellow">Black and Yellow</option>
+              <option value="green-lime">Green and Lime</option>
+              <option value="blue-cyan">Blue and Cyan</option>
+            </select>
+          </label>
+          <label
+            >Background Color:
+            <select id="background-color">
+              <option value="red">Red</option>
+              <option value="blue">Blue</option>
+              <option selected value="black">Black</option>
+              <option value="white">White</option>
+              <option value="cyan">Cyan</option>
+              <option value="green">Green</option>
+              <option value="dodgerblue">Dodger Blue</option>
+              <option value="chartreuse">Chartreuse</option>
+              <option value="fuchsia">Fuchsia</option>
+              <option value="yellow">Yellow</option>
+              <option value="gold">Gold</option>
+              <option value="indigo">Indigo</option>
+              <option value="lime">Lime</option>
+              <option value="magenta">Magenta</option>
+
+              <option value="deeppink">Deep Pink</option>
+              <option value="DarkSalmon">Dark Salmon</option>
+              <option value="DeepSkyBlue">Deep Sky Blue</option>
+              <option value="HotPink">Hot Pink</option>
+              <option value="OrangeRed">Orange Red</option>
+              <option value="Purple">Purple</option>
+              <option value="RoyalBlue">Royal Blue</option>
+              <option value="Violet">Violet</option>
+
+              <option disabled>-----Special Gradients-----</option>
+              <option value="linearGradient">Rainbow Linear Gradient</option>
+              <option value="radialGradient">Rainbow Radial Gradient</option>
+
+              <option disabled>-----Linear Gradients-----</option>
+              <option value="black-white">Black and White</option>
+              <option value="white-black">White and Black</option>
+              <option value="black-red">Black and Red</option>
+              <option value="black-yellow">Black and Yellow</option>
+              <option value="green-lime">Green and Lime</option>
+              <option value="blue-cyan">Blue and Cyan</option>
+              <!--Add these later -->
+              <!--
+              <option value="black-white">Black and White</option>
+              <option value="black-white">Black and White</option>
+              <option value="black-white">Black and White</option>
+              <option value="black-white">Black and White</option>
+              -->
+            </select>
+          </label>
+        </div>
+        <div class="userControls">
+          Preset Color Schemes:
+          <input
+            checked
+            type="radio"
+            id="matrix"
+            name="presets"
+            value="matrix"
+          />
+          <label for="matrix">The Matrix</label>
+          <input type="radio" id="bumblebee" name="presets" value="bumblebee" />
+          <label for="bumblebee">The Bumblebee</label>
+          <input type="radio" id="classic" name="presets" value="classic" />
+          <label for="classic">The Classic</label>
+          <input type="radio" id="bloodmoon" name="presets" value="bloodmoon" />
+          <label for="bloodmoon">The Blood Moon</label>
+          <input type="radio" id="custom" name="presets" value="custom" />
+          <label for="custom">Custom Colors</label>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,132 @@
+<html>
+  <head>
+    <!--
+		A canvas example from:
+		https://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/HTML-canvas-guide/DrawingLinesandShapes/DrawingLinesandShapes.html
+		Their coding style is different from what we'll be using in class - use our style, not theirs.
+	-->
+    <title>Simple curve example</title>
+    <style>
+      canvas {
+        background: #ffffff;
+        cursor: pointer;
+        margin-left: 10px;
+        margin-top: 10px;
+        box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+      }
+    </style>
+    <script type="text/javascript">
+      // global variables :-p
+      let canvas, ctx;
+
+      let controlPointLeft;
+      let controlPointTop;
+
+      let startPointLeft;
+      let startPointTop;
+
+      let endPointLeft;
+      let endPointTop;
+
+      let vector,
+        speed = 2.0;
+
+      function init() {
+        canvas = document.querySelector("canvas");
+        ctx = canvas.getContext("2d");
+
+        controlPointLeft = canvas.width / 2;
+        controlPointTop = 10;
+
+        startPointLeft = 0;
+        startPointTop = canvas.height / 2.0;
+
+        endPointLeft = canvas.width;
+        endPointTop = canvas.height / 2.0;
+
+        drawQuadraticCurve();
+        vector = getRandomUnitVector();
+        loop();
+      }
+      function drawQuadraticCurve() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.lineWidth = "3";
+        ctx.strokeStyle = "red";
+        ctx.beginPath();
+
+        ctx.moveTo(startPointLeft, startPointTop);
+        ctx.quadraticCurveTo(
+          controlPointLeft,
+          controlPointTop,
+          endPointLeft,
+          endPointTop
+        );
+        ctx.stroke();
+
+        ctx.strokeStyle = "black";
+        ctx.closePath();
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(
+          controlPointLeft,
+          controlPointTop,
+          endPointLeft,
+          endPointTop,
+          canvas.width,
+          canvas.height
+        );
+        ctx.stroke();
+      }
+
+      function loop() {
+        // schedule next frame
+        requestAnimationFrame(loop);
+
+        // move CP1
+        controlPointLeft += speed * vector.x;
+        controlPointTop += speed * vector.y;
+
+        // check boundaries
+        if (controlPointLeft >= canvas.width || controlPointLeft <= 0) {
+          vector.x *= -1; // flip direction
+          controlPointLeft += speed * vector.x; // move once
+        }
+
+        if (controlPointTop >= canvas.height || controlPointTop <= 0) {
+          vector.y *= -1; // flip direction
+          controlPointTop += speed * vector.y;
+        }
+
+        controlPointLeft = controlPointLeft;
+        controlPointTop = controlPointTop;
+
+        drawQuadraticCurve();
+        //drawCurves();
+      }
+
+      function getRandomUnitVector() {
+        let x = getRandom(-1, 1);
+        let y = getRandom(-1, 1);
+        let length = Math.sqrt(x * x + y * y);
+        if (length == 0) {
+          // very unlikely
+          x = 1; // point right
+          y = 0;
+          length = 1;
+        } else {
+          x /= length;
+          y /= length;
+        }
+
+        return { x: x, y: y };
+      }
+
+      function getRandom(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+    </script>
+  </head>
+  <body onload="init()" style="background-color: #e0e0e0">
+    <canvas height="400" width="600"> </canvas>
+  </body>
+</html>

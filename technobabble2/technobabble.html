@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="styles/default-styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Tarnav's Technobabble Generator</title>
+  </head>
+  <body>
+    <h1>Technobabble Generator</h1>
+    <div class="container">
+      <p id="output">Loading...</p>
+      <button id="my-button">More Technobabble!</button>
+    </div>
+
+    <script>
+      "use strict";
+
+      const words1 = [
+        "Acute",
+        "Aft",
+        "Anti-matter",
+        "Bipolar",
+        "Cargo",
+        "Command",
+        "Communication",
+        "Computer",
+        "Deuterium",
+        "Dorsal",
+        "Emergency",
+        "Engineering",
+        "Environmental",
+        "Flight",
+        "Fore",
+        "Guidance",
+        "Heat",
+        "Impulse",
+        "Increased",
+        "Inertial",
+        "Infinite",
+        "Ionizing",
+        "Isolinear",
+        "Lateral",
+        "Linear",
+        "Matter",
+        "Medical",
+        "Navigational",
+        "Optical",
+        "Optimal",
+        "Optional",
+        "Personal",
+        "Personnel",
+        "Phased",
+        "Reduced",
+        "Science",
+        "Ship's",
+        "Shuttlecraft",
+        "Structural",
+        "Subspace",
+        "Transporter",
+        "Ventral",
+      ];
+
+      const words2 = [
+        "Propulsion",
+        "Dissipation",
+        "Sensor",
+        "Improbability",
+        "Buffer",
+        "Graviton",
+        "Replicator",
+        "Matter",
+        "Anti-matter",
+        "Organic",
+        "Power",
+        "Silicon",
+        "Holographic",
+        "Transient",
+        "Integrity",
+        "Plasma",
+        "Fusion",
+        "Control",
+        "Access",
+        "Auto",
+        "Destruct",
+        "Isolinear",
+        "Transwarp",
+        "Energy",
+        "Medical",
+        "Environmental",
+        "Coil",
+        "Impulse",
+        "Warp",
+        "Phaser",
+        "Operating",
+        "Photon",
+        "Deflector",
+        "Integrity",
+        "Control",
+        "Bridge",
+        "Dampening",
+        "Display",
+        "Beam",
+        "Quantum",
+        "Baseline",
+        "Input",
+      ];
+
+      const words3 = [
+        "Chamber",
+        "Interface",
+        "Coil",
+        "Polymer",
+        "Biosphere",
+        "Platform",
+        "Thruster",
+        "Deflector",
+        "Replicator",
+        "Tricorder",
+        "Operation",
+        "Array",
+        "Matrix",
+        "Grid",
+        "Sensor",
+        "Mode",
+        "Panel",
+        "Storage",
+        "Conduit",
+        "Pod",
+        "Hatch",
+        "Regulator",
+        "Display",
+        "Inverter",
+        "Spectrum",
+        "Generator",
+        "Cloud",
+        "Field",
+        "Terminal",
+        "Module",
+        "Procedure",
+        "System",
+        "Diagnostic",
+        "Device",
+        "Beam",
+        "Probe",
+        "Bank",
+        "Tie-In",
+        "Facility",
+        "Bay",
+        "Indicator",
+        "Cell",
+      ];
+
+      console.log(words1[0]);
+      randomize();
+
+      function randomElement(array) {
+        return array[Math.floor(Math.random() * words1.length)];
+      }
+
+      function randomize() {
+        const words = `${randomElement(words1)} ${randomElement(
+          words2
+        )} ${randomElement(words3)}!`;
+        document.querySelector("#output").innerHTML = words;
+      }
+
+      document.querySelector("#my-button").onclick = randomize;
+    </script>
+    <script src="src/main.js"></script>
+  </body>
+</html>

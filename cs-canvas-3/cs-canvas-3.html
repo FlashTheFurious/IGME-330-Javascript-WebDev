@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>ScreenSaver Canvas</title>
+    <style>
+      canvas {
+        border: 1px solid gray;
+      }
+    </style>
+    <script>
+      // #0 - in this class we will always use ECMAScript 5's "strict" mode
+      // See what 'use strict' does here:
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope/Strict_mode
+      "use strict";
+
+      // #1 call the `init` function after the pages loads
+      window.onload = init;
+
+      let ctx;
+
+      // handy helper functions!
+      function getRandomColor() {
+        function getByte() {
+          return 55 + Math.round(Math.random() * 200);
+        }
+        return (
+          "rgba(" +
+          getByte() +
+          "," +
+          getByte() +
+          "," +
+          getByte() +
+          ",." +
+          getRandomInt(80, 99) +
+          ")"
+        );
+      }
+
+      function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      function update() {
+        requestAnimationFrame(update);
+        drawRandomRect(ctx);
+        drawRandomFace(ctx);
+      }
+
+      function drawRandomRect(ctx) {
+        let randomX = getRandomInt(0, 690);
+        let randomY = getRandomInt(0, 490);
+        let randomWidth = getRandomInt(20, 400);
+        let randomHeight = getRandomInt(20, 400);
+
+        ctx.lineWidth = getRandomInt(2, 15);
+        ctx.strokeStyle = getRandomColor();
+        ctx.fillStyle = getRandomColor();
+
+        //Draw Rect
+        ctx.beginPath();
+        ctx.rect(randomX, randomY, randomWidth, randomHeight);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+      }
+
+      function drawRandomFace(ctx) {
+        let randomX = getRandomInt(0, 690);
+        let randomY = getRandomInt(0, 490);
+        let randomRadius = getRandomInt(100, 150);
+
+        ctx.lineWidth = getRandomInt(2, 15);
+        ctx.strokeStyle = getRandomColor();
+        ctx.fillStyle = getRandomColor();
+
+        // Face Circle
+        ctx.beginPath();
+        // (x, y, radius, start angle, end angle,windingBool[irrelevant] )
+        ctx.arc(randomX, randomY, randomRadius, 0, Math.PI * 2, false);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        //Eyes
+        ctx.fillStyle = "black";
+        ctx.strokeStyle = "white";
+        ctx.lineWidth = 8;
+
+        ctx.beginPath();
+        ctx.arc(randomX + 50, randomY - 35, 12, 0, Math.PI * 2, false);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        // (x, y, radius, start angle, end angle,windingBool[irrelevant] )
+        ctx.arc(randomX - 50, randomY - 35, 12, 0, Math.PI * 2, false);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        //Mouth
+        ctx.fillStyle = "firebrick";
+        ctx.beginPath();
+        // (x, y, radius, start angle, end angle,windingBool[irrelevant] )
+        ctx.arc(randomX, randomY + 20, randomRadius * 0.6, 0, Math.PI, false);
+        ctx.closePath();
+        ctx.fill();
+      }
+      function init() {
+        console.log("page loaded!");
+        // #2 Now that the page has loaded, start drawing!
+
+        // A - `canvas` variable points at <canvas> tag
+        let canvas = document.querySelector("canvas");
+
+        // B - the `ctx` variable points at a "2D drawing context"
+        ctx = canvas.getContext("2d");
+
+        // C - all fill operations are now in red
+        ctx.fillStyle = "black";
+
+        // D - fill a rectangle with the current fill color
+        ctx.fillRect(0, 0, 700, 500);
+
+        drawRandomFace(ctx);
+        update();
+      }
+    </script>
+  </head>
+  <body>
+    <canvas width="700" height="500"> Get a real browser! </canvas>
+  </body>
+</html>

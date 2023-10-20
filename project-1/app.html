@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeebList App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="styles/default-styles.css" />
+    <script type="module" src="src/app-search.js"></script>
+    <script type="module" src="src/loader.js"></script>
+  </head>
+  <body class="has-background-black">
+    <!-- Navbar component -->
+    <p1-nav data-page="app"></p1-nav>
+    <main class="px-1 py-1">
+      <div class="has-background-info mr-1 p-1">
+        <div class="is-large p-4 has-background-black">
+          <!-- Row #1 -->
+          <app-header data-page="WeebList App"></app-header>
+          <!-- First Webcomponent-->
+
+          <!-- Row #2 - Instructions -->
+          <div class="mt-2 mb-0 box has-background-black has-text-white">
+            <p class="mb-4">
+              Select your Filters and click Search when you are ready
+            </p>
+
+            <!-- Row #2 - Controls -->
+            <div class="box is-responsive" id="box-controls">
+              <div class="control is-inline-block mr-3">
+                <span class="mt-2 subtitle has-text-weight-bold"> Genre:</span>
+                <select
+                  title="Select the Genre of Anime you are looking for"
+                  id="field-genre"
+                  class="mt-2 select is-primary is-small"
+                >
+                  <!-- Generated List Genres goes here -->
+                  <option>All</option>
+                </select>
+              </div>
+              <div class="control is-inline-block mr-3">
+                <input
+                  title="Enter the name of the anime"
+                  type="text"
+                  id="field-name"
+                  class="input is-small mt-2"
+                  placeholder="Anime Name"
+                />
+                <!-- remove input class to fix line issue -->
+              </div>
+
+              <div class="control is-inline-block">
+                <span class="subtitle mt-2 has-text-weight-bold">
+                  Number of results:</span
+                >
+                <select
+                  title="Choose max number of results!"
+                  id="field-limit"
+                  class="select mt-2 is-primary is-small"
+                >
+                  <option>1</option>
+                  <option>5</option>
+                  <option>10</option>
+                  <option>15</option>
+                  <option>20</option>
+                  <option selected>25</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="control is-responsive ml-6">
+            <button
+              id="btn-search"
+              class="button mr-2 has-text-weight-bold has-text-black is-medium is-success"
+              title="Search for some Animes!"
+            >
+              Search!
+            </button>
+            <button
+              id="btn-clear-all"
+              class="button has-text-weight-bold is-medium has-text-black is-warning"
+              title="Clear All Results"
+            >
+              Clear All Results!
+            </button>
+          </div>
+
+          <!-- Row #3 - Results -->
+          <div class="box has-background-black">
+            <div id="status-div" class="is-large p-1">
+              <h2
+                class="subtitle has-text-weight-bold mb-2 mt-0 has-text-light"
+              >
+                My Results
+              </h2>
+              <p class="has-text-warning mb-2" id="element-status">
+                Click the <b>Search</b> button to view Animes.
+              </p>
+              <div id="element-card-holder">
+                <!-- Search results go here-->
+
+                <!-- Search results end -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <app-footer
+      data-footer="There is no such thing as too many animes to watch"
+    ></app-footer>
+  </body>
+</html>

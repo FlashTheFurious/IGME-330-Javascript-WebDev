@@ -1,0 +1,233 @@
+/*
+	main.js is primarily responsible for hooking up the UI to the rest of the application 
+	and setting up the main event loop
+*/
+
+// We will write the functions in this file in the traditional ES5 way
+// In this instance, we feel the code is more readable if written this way
+// If you want to re-write these as ES6 arrow functions, to be consistent with the other files, go ahead!
+import * as canvas from "./canvas.js";
+import * as utils from "./utils.js";
+import * as audio from "./audio.js";
+
+const drawParams = {
+  showGradient: true,
+  showBars: true,
+  showCircles: true,
+  showNoise: false,
+  showInvert: false,
+  showEmboss: false,
+  showLine: false,
+  showCircleBar: false,
+};
+// 1 - here we are faking an enumeration
+const DEFAULTS = Object.freeze({
+  sound1: "media/New Adventure Theme.mp3",
+});
+
+function init() {
+  audio.setupWebAudio(DEFAULTS.sound1);
+  //This reads better
+  let gradientCheckbox = document.querySelector("#gradientCB");
+  let barsCheckbox = document.querySelector("#barsCB");
+  let circlesCheckbox = document.querySelector("#circlesCB");
+  let noiseCheckbox = document.querySelector("#noiseCB");
+  let invertCheckbox = document.querySelector("#invertCB");
+  let embossCheckbox = document.querySelector("#embossCB");
+  let lineCheckbox = document.querySelector("#lineCB");
+  let circleBarCheckbox = document.querySelector("#circleBarCB");
+
+  gradientCheckbox.checked = true;
+  barsCheckbox.checked = true;
+  circlesCheckbox.checked = true;
+  noiseCheckbox.checked = false;
+  invertCheckbox.checked = false;
+  embossCheckbox.checked = false;
+  lineCheckbox.checked = false;
+  circleBarCheckbox.checked = false;
+
+  gradientCheckbox.onchange = () => {
+    if (gradientCheckbox.checked == true) {
+      drawParams.showGradient = true;
+      //console.log(drawParams);
+    } else if (gradientCheckbox.checked == false) {
+      //drawParams["showCircles"] = false; // also works
+      drawParams.showGradient = false;
+      //console.log(drawParams);
+    }
+  };
+
+  barsCheckbox.onchange = () => {
+    if (barsCheckbox.checked == true) {
+      drawParams.showBars = true;
+      //console.log(drawParams);
+    } else if (barsCheckbox.checked == false) {
+      //drawParams["showCircles"] = false; // also works
+      drawParams.showBars = false;
+      //console.log(drawParams);
+    }
+  };
+
+  circlesCheckbox.onchange = () => {
+    if (circlesCheckbox.checked == true) {
+      drawParams.showCircles = true;
+      //console.log(drawParams);
+    } else if (circlesCheckbox.checked == false) {
+      //drawParams["showCircles"] = false; // also works
+      drawParams.showCircles = false;
+      //console.log(drawParams);
+    }
+
+    //console.log(drawParams);
+  };
+
+  noiseCheckbox.onchange = () => {
+    if (noiseCheckbox.checked == true) {
+      drawParams.showNoise = true;
+      //console.log(drawParams);
+    } else if (noiseCheckbox.checked == false) {
+      //drawParams["showCircles"] = false; // also works
+      drawParams.showNoise = false;
+      //console.log(drawParams);
+    }
+  };
+
+  invertCheckbox.onchange = () => {
+    if (invertCheckbox.checked == true) {
+      drawParams.showInvert = true;
+      //console.log(drawParams);
+    } else if (invertCheckbox.checked == false) {
+      //drawParams["showCircles"] = false; // also works
+      drawParams.showInvert = false;
+      //console.log(drawParams);
+    }
+  };
+
+  embossCheckbox.onchange = () => {
+    if (embossCheckbox.checked == true) {
+      drawParams.showEmboss = true;
+      //console.log(drawParams);
+    } else if (embossCheckbox.checked == false) {
+      //drawParams["showCircles"] = false; // also works
+      drawParams.showEmboss = false;
+      //console.log(drawParams);
+    }
+  };
+
+  lineCheckbox.onchange = () => {
+    if (lineCheckbox.checked == true) {
+      drawParams.showLine = true;
+    } else if (lineCheckbox.checked == false) {
+      drawParams.showLine = false;
+    }
+  };
+  circleBarCheckbox.onchange = () => {
+    if (circleBarCheckbox.checked == true) {
+      drawParams.showCircleBar = true;
+    } else if (circleBarCheckbox.checked == false) {
+      drawParams.showCircleBar = false;
+    }
+  };
+  console.log("init called");
+  console.log(
+    `Testing utils.getRandomColor() import: ${utils.getRandomColor()}`
+  );
+  let canvasElement = document.querySelector("canvas"); // hookup <canvas> element
+  setupUI(canvasElement);
+  canvas.setupCanvas(canvasElement, audio.analyserNode);
+  loop();
+}
+
+function setupUI(canvasElement) {
+  // A - hookup fullscreen button
+  const fsButton = document.querySelector("#fsButton");
+  const playButton = document.querySelector("#playButton");
+  // add .onclick event to button
+  fsButton.onclick = (e) => {
+    console.log("init called");
+    utils.goFullscreen(canvasElement);
+  };
+
+  // add.onclick event to button
+  playButton.onclick = (e) => {
+    console.log(`audioCtx.state before = ${audio.audioCtx.state}`);
+
+    //check if context is in suspended state(autoplay policy)
+    if (audio.audioCtx.state == "suspended") {
+      audio.audioCtx.resume();
+    }
+    console.log(`audioCtx.state after = ${audio.audioCtx.state}`);
+
+    if (e.target.dataset.playing == "no") {
+      //if track is currently paused, play it
+      audio.playCurrentSound();
+      e.target.dataset.playing = "yes"; //Css will set text to Pause
+    } else {
+      // if track IS playing, pause it
+      audio.pauseCurrentSound();
+      e.target.dataset.playing = "no"; //Css will set text to Play
+    }
+  };
+
+  // C - hookup volume slider and label
+  let volumeSlider = document.querySelector("#volumeSlider");
+  let volumeLabel = document.querySelector("#volumeLabel");
+
+  // add .oninput  event to slider = e=>
+  volumeSlider.oninput = (e) => {
+    //set the gain
+    audio.setVolume(e.target.value);
+    //update value of label to match value of slider
+    volumeLabel.innerHTML = Math.round((e.target.value / 2) * 100);
+  };
+
+  // set value of label to match initial value of slider
+  volumeSlider.dispatchEvent(new Event("input"));
+
+  // D - hookup track <select>
+  let trackSelect = document.querySelector("#trackSelect");
+  // add .onchange event to <select>
+  trackSelect.onchange = (e) => {
+    audio.loadSoundFile(e.target.value);
+    // if track IS playing, pause it
+    if (playButton.dataset.playing == "yes") {
+      playButton.dispatchEvent(new MouseEvent("click"));
+    }
+  };
+} // end setupUI
+
+function loop() {
+  requestAnimationFrame(loop);
+  canvas.draw(drawParams);
+
+  /*
+  // NOTE: This is temporary testing code that we will delete in Part II 
+  // 1) create a byte array (values of 0-255) to hold the audio data
+  // normally, we do this once when the program starts up, NOT every frame
+  let audioData = new Uint8Array(audio.analyserNode.fftSize / 2);
+
+  // 2) populate the array of audio data *by reference* (i.e. by its address)
+  audio.analyserNode.getByteFrequencyData(audioData);
+
+  // 3) log out the array and the average loudness (amplitude) of all of the frequency bins
+  //console.log(audioData);
+
+  //console.log("-----Audio Stats-----");
+
+  let totalLoudness = audioData.reduce((total, num) => total + num);
+  let averageLoudness = totalLoudness / (audio.analyserNode.fftSize / 2);
+  let minLoudness = Math.min(...audioData); // ooh - the ES6 spread operator is handy!
+  let maxLoudness = Math.max(...audioData); // ditto!
+  // Now look at loudness in a specific bin
+  // 22050 kHz divided by 128 bins = 172.23 kHz per bin
+  // the 12th element in array represents loudness at 2.067 kHz
+  let loudnessAt2K = audioData[11];
+  
+  console.log(`averageLoudness = ${averageLoudness}`);
+  console.log(`minLoudness = ${minLoudness}`);
+  console.log(`maxLoudness = ${maxLoudness}`);
+  console.log(`loudnessAt2K = ${loudnessAt2K}`);
+  console.log("---------------------");
+  */
+}
+export { init };

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeebList Home</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="styles/default-styles.css" />
+  </head>
+  <body>
+    <!-- Navbar component -->
+    <p1-nav data-page="home"></p1-nav>
+
+    <div class="columns is-vcentered">
+      <div class="column">
+        <div class="hero is-large is-black pl-2 pt-2 pr-2">
+          <div class="hero-head">
+            <app-header data-page="WeebList Home"></app-header>
+            <!-- First Webcomponent  mt-4 pl-4  
+-->
+
+            <p class="is-size-4 m-auto pl-4 is-size-6-mobile">
+              Tired of constantly keeping track of which animes you're watching?
+            </p>
+            <p class="is-size-4 m-auto pl-4 is-size-6-mobile">
+              Ran out of animes and looking for new ones?
+            </p>
+            <p class="is-size-4 m-auto pl-4 is-size-6-mobile">
+              Don't have a go to list of anime recommendations handy whenever
+              your friends ask?
+            </p>
+            <p class="is-size-4 m-auto pl-4 is-size-6-mobile">
+              Well, Fear no More!
+            </p>
+
+            <p class="is-size-3 mt-4 pl-4 is-size-5-mobile">
+              WeebList is here to save the day!
+            </p>
+
+            <img
+              id="desktop-img"
+              class="p-3 is-hidden-touch"
+              src="images/ace-hero.png"
+              alt="ace-hero"
+            />
+            <img
+              id="mobile-img"
+              class="pt-3 is-hidden-desktop"
+              src="images/ace-hero.png"
+              alt="ace-hero"
+            />
+          </div>
+          <app-footer
+            data-footer="This website uses the Jikan API v4"
+          ></app-footer>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="src/loader.js"></script>
+  </body>
+</html>

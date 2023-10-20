@@ -1,0 +1,22 @@
+{
+  "matrix": {
+    "barStroke": "black",
+    "background": "black",
+    "lineStroke": "green-lime"
+  },
+  "bumblebee": {
+    "barStroke": "black",
+    "background": "black",
+    "lineStroke": "yellow"
+  },
+  "bloodmoon": {
+    "barStroke": "black",
+    "background": "black",
+    "lineStroke": "red"
+  },
+  "classic": {
+    "barStroke": "black",
+    "background": "white-black",
+    "lineStroke": "white"
+  }
+}

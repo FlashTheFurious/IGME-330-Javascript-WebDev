@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6/dat.gui.min.js"
+      integrity="sha256-HJ7j+71YYw6Kcs8THwQV9lXmPOcR0eXlg7n8KRTZsyA="
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="src/loader.js"></script>
+    <title>dat.GUI demo</title>
+  </head>
+  <body>
+    <h1>dat.GUI demo</h1>
+    <p id="score">Score: 0</p>
+	<section>
+		Volume:
+		<input
+		  type="range"
+		  id="volumeSlider"
+		  min="0"
+		  max="2"
+		  value="1"
+		  step="0.01"
+		/>
+		<span id="volumeLabel">50</span>
+    <span
+      ><input type="checkbox" id="gradientCB" /><label for="gradientCB"
+        >Show Gradient</label
+      ></span
+    >
+    <section>
+      Preset Color Schemes:
+      <input checked type="radio" id="matrix" name="presets" value="matrix" />
+      <label for="matrix">The Matrix</label>
+      <input type="radio" id="bumblebee" name="presets" value="bumblebee" />
+      <label for="bumblebee">The Bumblebee</label>
+      <input type="radio" id="classic" name="presets" value="classic" />
+      <label for="classic">The Classic</label>
+      <input type="radio" id="bloodmoon" name="presets" value="bloodmoon" />
+      <label for="bloodmoon">The Blood Moon</label>
+      <input type="radio" id="custom" name="presets" value="custom" />
+      <label for="custom">Custom Colors</label>
+    </section>
+    <label
+      >Line Color:
+      <select id="lineStrokeSelect">
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="black">Black</option>
+        <option value="white">White</option>
+        <option value="cyan">Cyan</option>
+        <option value="green">Green</option>
+        <option value="dodgerblue">Dodger Blue</option>
+        <option value="chartreuse">Chartreuse</option>
+        <option value="fuchsia" selected>Fuchsia</option>
+        <option value="yellow">Yellow</option>
+        <option value="gold">Gold</option>
+        <option value="indigo">Indigo</option>
+        <option value="lime">Lime</option>
+        <option value="magenta">Magenta</option>
+
+        <option value="deeppink">Deep Pink</option>
+        <option value="DarkSalmon">Dark Salmon</option>
+        <option value="DeepSkyBlue">Deep Sky Blue</option>
+        <option value="HotPink">Hot Pink</option>
+        <option value="OrangeRed">Orange Red</option>
+        <option value="Purple">Purple</option>
+        <option value="RoyalBlue">Royal Blue</option>
+        <option value="Violet">Violet</option>
+
+        <option disabled>-----Special Gradients-----</option>
+        <option value="linearGradient">Rainbow Linear Gradient</option>
+        <option value="radialGradient">Rainbow Radial Gradient</option>
+
+        <option disabled>-----Linear Gradients-----</option>
+        <option value="black-white">Black and White</option>
+        <option value="white-black">White and Black</option>
+        <option value="black-red">Black and Red</option>
+        <option value="black-yellow">Black and Yellow</option>
+        <option selected value="green-lime">Green and Lime</option>
+        <option value="blue-cyan">Blue and Cyan</option>
+      </select>
+    </label>
+    <hr />
+
+    <p>
+      dat.GUI is a JS library for creating a minimalist GUI - go ahead an click
+      the "Open Controls" button on the right.
+    </p>
+    <p>
+      This allows your users to focus on the experience you have created, rather
+      than being forced to scroll up and down the screen while they are tweaking
+      the parameters of your app.
+    </p>
+    <p>
+      We are using ES6 module syntax here - so this example needs to run off of
+      a web server.
+    </p>
+    <p>Read the source code to see how it works.</p>
+    <p>Here is the dat.GUI reference link:</p>
+    <ul>
+      <li>
+        <a href="https://github.com/dataarts/dat.gui/blob/master/API.md"
+          >https://github.com/dataarts/dat.gui/blob/master/API.md</a
+        >
+      </li>
+    </ul>
+  </body>
+</html>

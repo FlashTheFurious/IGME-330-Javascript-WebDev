@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audio Visualizer Home</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script type="module" src="./src/loader.js"></script>
+    <link rel="stylesheet" href="styles/default-styles.css" />
+  </head>
+  <body>
+    <!-- Navbar component -->
+    <p2-nav data-page="home"></p2-nav>
+
+    <div id="home-wrapper" class="columns is-vcentered">
+      <div class="column">
+        <div class="hero is-large is-black pl-2 pt-2 pr-2">
+          <div class="hero-head">
+            <app-header data-page="Audio Visualizer Home"></app-header>
+            <!-- First Webcomponent  mt-4 pl-4  
+-->
+
+            <p class="is-size-4 m-auto pl-4 is-size-6-mobile">
+              Welcome to Audio Visualizer by Tarnav Bhasin
+            </p>
+            <p class="is-size-4 m-auto pl-4 is-size-6-mobile">
+              This app provides the user with a number of controls to control
+              their audio visualizer experience
+            </p>
+            <p class="is-size-4 m-auto pl-4 is-size-6-mobile">
+              Select your favorite color preset and choose the shapes you wish
+              to visualize
+            </p>
+            <p class="is-size-4 m-auto pl-4 is-size-6-mobile">
+              There are 5 tracks available to visualize. Due to CORS
+              restrictions, You cannot visualize audio from your own computer
+            </p>
+            <p class="is-size-3 mt-4 pl-4 is-size-5-mobile">
+              Enjoy your experience!
+            </p>
+
+            <img
+              id="desktop-img"
+              class="pt-3 is-hidden-mobile"
+              src="./media/music-hero.jpeg"
+              alt="music-hero"
+            />
+            <img
+              id="mobile-img"
+              class="pt-3 is-hidden-desktop"
+              src="./media/music-hero.jpeg"
+              alt="music-hero"
+            />
+          </div>
+          <app-footer
+            data-footer="This website uses Canvas API to visualize the audio data"
+          ></app-footer>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

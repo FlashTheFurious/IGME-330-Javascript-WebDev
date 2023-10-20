@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audio Visualizer Documentation</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/default-styles.css" />
+  </head>
+  <body>
+    <!-- Navbar component -->
+    <p2-nav data-page="documentation"></p2-nav>
+    <!-- Main Page -->
+    <main class="px-1 py-1">
+      <div class="is-large pr-2">
+        <div class="is-large p-4 has-background-dark">
+          <!-- Row #1 -->
+          <app-header data-page="Audio Visualizer Documentation"></app-header>
+          <!-- First Webcomponent-->
+
+          <!-- Row #2  -->
+          <div class="box mt-2">
+            <h2 class="subtitle has-text-weight-bold mb-0">
+              Project Requirements
+            </h2>
+            <ol>
+              <li>
+                Link to the
+                <a
+                  href="https://github.com/tonethar/IGME-330-Fall-2022/blob/main/projects/p2.md#page-documentation"
+                >
+                  Project Requirements
+                </a>
+              </li>
+            </ol>
+            <h2 class="subtitle has-text-weight-bold mb-0">
+              Resources Utilized
+            </h2>
+            <ol>
+              <li>
+                Roboto Font -
+                <a href="https://fonts.google.com/specimen/Roboto">
+                  from Google Fonts</a
+                >
+              </li>
+              <li>
+                Righteous Font -
+                <a
+                  href="https://www.dafont.com/futurama.font?psize=l&text=Audio+Visualizer+Home"
+                >
+                  from Google Fonts, used in Headers</a
+                >
+              </li>
+              <li>
+                Navbar Icon-
+                <a
+                  href="https://fontawesome.com/icons/wave-square?s=solid&f=classic"
+                >
+                  from FontAwesome</a
+                >
+              </li>
+              <li>
+                Audio Visualizer HW2 starter code -
+                <a
+                  href="https://github.com/tonethar/IGME-330-Master/blob/master/notes/HW-AV-2195-2.md"
+                >
+                  https://github.com/tonethar/IGME-330-Master/blob/master/notes/HW-AV-2195-2.md</a
+                >
+              </li>
+              <li>
+                <a href="https://bulma.io/documentation/helpers/color-helpers/">
+                  https://bulma.io/documentation/helpers/color-helpers/</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://bulma.io/documentation/helpers/spacing-helpers/"
+                >
+                  https://bulma.io/documentation/helpers/spacing-helpers/</a
+                >
+              </li>
+              <li>
+                Background Image from
+                <a href="https://wallpapersafari.com/music-abstract-wallpaper/">
+                  https://wallpapersafari.com/music-abstract-wallpaper/</a
+                >
+              </li>
+            </ol>
+            <h2 class="subtitle has-text-weight-bold mb-0">API</h2>
+            <ol>
+              <li>
+                Link to the
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API"
+                >
+                  Canvas API Documentation
+                </a>
+              </li>
+            </ol>
+            <h2 class="subtitle has-text-weight-bold mb-0">Noteworthy</h2>
+            <ol>
+              <li>
+                Audio analyser node was used to get Frequency data about the
+                song
+              </li>
+              <li>
+                We currently visualize 512 samples on the screen, can be
+                increased by changing the bufferLength variable
+              </li>
+              <li>
+                App has over 15 control options for the user to customize their
+                experience
+              </li>
+              <li>
+                Tweaked all shape visualizers to better represent the sound than
+                the code we had in HW2
+              </li>
+              <li>Bulma is used to make the site mobile friendly</li>
+              <li>
+                3 Web Components are used to follow DRY code principles, -
+                Navigation, Header and Footer
+              </li>
+
+              <li>
+                Json regarding the color values of the presets is loaded by use
+                of fetch()
+              </li>
+            </ol>
+            <h2 class="subtitle has-text-weight-bold mb-0">Grading</h2>
+            <ol>
+              <li>fetch() is used on the App page</li>
+              <li>
+                App page has way more than the required number of controls
+              </li>
+              <li>App has a coherent theme</li>
+              <li>App state is obvious to user</li>
+              <li>User can use the app with minimal instructions</li>
+              <li>Runs without errors</li>
+              <li>There are 2 embedded fonts</li>
+              <li>All Pages pass HTML and CSS validation</li>
+              <li>Global Navigation system with cues is present</li>
+              <li>Widgets are well labeled and follow interface conventions</li>
+              <li>All images were properly optimized</li>
+              <li>Code runs without any errors</li>
+              <li>Uses Bulma on all Pages</li>
+              <li>Mobile friendly with hamburger navigation menu</li>
+              <li>Each webcomponent is in a separate js file</li>
+              <li>Valid HTML and CSS</li>
+              <li>ES6 module pattern used</li>
+              <li>Images were optimized and are less than 100kb</li>
+            </ol>
+            <h2 class="subtitle has-text-weight-bold mb-0">To Do</h2>
+            <ol>
+              <li>Add more controls to the App search</li>
+              <li>Add sorting functionality on the Community page</li>
+              <li>
+                Add functionality for the user to create multiple anime lists
+                and name them
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="./src/loader.js"></script>
+    <app-footer
+      data-footer="This app was developed by Tarnav Bhasin, 2022"
+    ></app-footer>
+  </body>
+</html>

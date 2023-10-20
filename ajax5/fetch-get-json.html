@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <title>XHR - Load JSON</title>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>XHR - Load JSON</h2>
+
+    <hr />
+    <button id="my-button">Load Data</button>
+    <div id="output">Click button to load</div>
+
+    <script>
+      document.querySelector("#my-button").onclick = loadJsonFetch;
+
+      function loadJsonFetch() {
+        /*
+        fetch("https://swapi.dev/api/people/1")
+          .then((response) => {
+            // If the response is successful, return the JSON
+            if (response.ok) {
+              return response.json();
+            }
+
+            // else throw an error that will be caught below
+            return response.text().then((text) => {
+              throw text;
+            });
+          }) // send the response.json() promise to the next .then()
+          .then((json) => {
+            // the second promise is resolved and 'json' is a JSON object
+            console.log(json); // name: 'Luke Skywalker', height: '172', etc
+            console.log(json.name); //Luke Skywalker
+            console.log(json.homeworld);
+          }) // https://swapi.dev/api/planets/1
+          .catch((error) => {
+            //error
+            console.log(error);
+          });
+      */
+
+        fetch("data/pet-names.json")
+          .then((response) => {
+            // If the response is successful, return the JSON
+            if (response.ok) {
+              return response.json();
+            }
+
+            // else throw an error that will be caught below
+            return response.text().then((text) => {
+              throw text;
+            });
+          }) // send the response.json() promise to the next .then()
+          .then((json) => {
+            // the second promise is resolved and 'json' is a JSON object
+
+            const dogNames = json["dognames"];
+            const catNames = json["catnames"];
+
+            const dogHtml = dogNames.map((w) => `<li>${w}</li>`).join("");
+            const catHtml = catNames.map((w) => `<li>${w}</li>`).join("");
+
+            document.querySelector("#output").innerHTML = `
+          <h3> Dog Names</h3><ol> ${dogHtml} </ol>
+          <h3> Cat Names</h3><ol> ${catHtml} </ol>`;
+          })
+          .catch((error) => {
+            //error
+            console.log(error);
+          });
+
+        console.log(document.querySelectorAll("#output h3"));
+      }
+    </script>
+  </body>
+</html>

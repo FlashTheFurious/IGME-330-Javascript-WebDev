@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeebList Documentation</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="styles/default-styles.css" />
+  </head>
+  <body>
+    <!-- Navbar component -->
+    <p1-nav data-page="documentation"></p1-nav>
+    <!-- Main Page -->
+    <main class="px-1 py-1">
+      <div class="is-large pr-2">
+        <div class="is-large p-4 has-background-dark">
+          <!-- Row #1 -->
+          <app-header data-page="WeebList Documentation"></app-header>
+          <!-- First Webcomponent-->
+
+          <!-- Row #2  -->
+          <div class="box mt-2">
+            <p class="subtitle has-text-weight-bold mb-0">Proposal</p>
+            <ol>
+              <li>
+                Link to the
+                <a href="https://github.com/mateoaranda/jikanjs">
+                  JikanJS Wrapper by Mateo Aranda Documentation
+                </a>
+              </li>
+            </ol>
+            <p><b> Major Features -</b></p>
+            <ol>
+              <li>
+                <b> Anime Search </b>- Allows users to search for animes by
+                filtering the results on the basis of number of results, name
+                and genre.
+              </li>
+              <li>
+                <b> Add to List </b>- Allows the user to build a temporary list
+                of anime names by adding searched animes to this list.
+              </li>
+              <li>
+                <b> Save Favorites </b>- Allows the user to save their favorite
+                list of animes and share it with the Community. Anime Likes can
+                be found in the Community page
+              </li>
+            </ol>
+            <p><b>Interface Mockup</b></p>
+            <img
+              id="mobile-doc-img"
+              class="p-3 is-hidden-desktop"
+              style="width: 100%"
+              src="images/p1-interface.png"
+              alt="dog"
+            />
+            <img
+              id="desktop-doc-img"
+              class="p-3 is-hidden-touch"
+              style="width: 70%"
+              src="images/p1-interface.png"
+              alt="dog"
+            />
+
+            <h2 class="subtitle has-text-weight-bold mb-0">
+              Project Requirements
+            </h2>
+            <ol>
+              <li>
+                Link to the
+                <a
+                  href="https://github.com/tonethar/IGME-330-Fall-2022/blob/main/projects/p1-checkpoint-2.md#v-content-requirements---aboutdocumentation-page"
+                >
+                  Project Requirements
+                </a>
+              </li>
+            </ol>
+            <h2 class="subtitle has-text-weight-bold mb-0">
+              Resources Utilized
+            </h2>
+            <ol>
+              <li>
+                <a href="https://bulma.io/documentation/elements/button/">
+                  https://bulma.io/documentation/elements/button/</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://bulma.io/documentation/helpers/visibility-helpers/"
+                >
+                  https://bulma.io/documentation/helpers/visibility-helpers/</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://bulma.io/documentation/elements/button/#responsive-sizes"
+                >
+                  https://bulma.io/documentation/elements/button/#responsive-sizes</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://bulma.io/documentation/helpers/typography-helpers/"
+                >
+                  https://bulma.io/documentation/helpers/typography-helpers/</a
+                >
+              </li>
+              <li>
+                <a href="https://bulma.io/documentation/helpers/color-helpers/">
+                  https://bulma.io/documentation/helpers/color-helpers/</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://bulma.io/documentation/helpers/spacing-helpers/"
+                >
+                  https://bulma.io/documentation/helpers/spacing-helpers/</a
+                >
+              </li>
+              <li>
+                Font used - 'Merienda One' -
+                <a
+                  href="https://fonts.google.com/specimen/Merienda+One?query=merienda"
+                >
+                  https://fonts.google.com/specimen/Merienda+One?query=merienda</a
+                >
+              </li>
+            </ol>
+            <h2 class="subtitle has-text-weight-bold mb-0">API</h2>
+            <ol>
+              <li>
+                Link to the
+                <a href="https://docs.api.jikan.moe/">
+                  Jikan API Documentation
+                </a>
+              </li>
+              <li>
+                Link to
+                <a href="https://jikan.moe/"> Jikan Home </a>
+              </li>
+            </ol>
+            <h2 class="subtitle has-text-weight-bold mb-0">Noteworthy</h2>
+            <ol>
+              <li>Fetch was used to get Json Data</li>
+              <li>Bulma is used to make the site mobile friendly</li>
+              <li>4 Web Components are used to follow DRY code principles</li>
+              <li>Uses local storage to save UI state</li>
+              <li>Stores favorites in local storage</li>
+              <li>
+                Uses Firebase to store and retrieve data on how many likes an
+                anime has recieved, i.e, how many times it was favorited and
+                shared
+              </li>
+            </ol>
+            <h2 class="subtitle has-text-weight-bold mb-0">Grading</h2>
+            <ol>
+              <li>Ajax via fetch() is on the App page</li>
+              <li>App page has required number of controls</li>
+              <li>
+                UI state is saved and restored on the App page, except for the
+                genre field
+              </li>
+              <li>
+                Cards have a favorite button and a remove from favorites button
+              </li>
+              <li>
+                The Favorite system works and has been tested on banjo and a
+                local server
+              </li>
+              <li>
+                Firebase functionality is used to store likes data of animes
+              </li>
+              <li>There is an embedded font</li>
+              <li>All Pages pass HTML and CSS validation</li>
+              <li>Global Navigation system with cues is present</li>
+              <li>Widgets are well labeled and follow interface conventions</li>
+              <li>All images were properly optimized</li>
+              <li>Code runs without any errors</li>
+            </ol>
+            <h2 class="subtitle has-text-weight-bold mb-0">To Do</h2>
+            <ol>
+              <li>Add more controls to the App search</li>
+              <li>Add sorting functionality on the Community page</li>
+              <li>
+                Add functionality for the user to create multiple anime lists
+                and name them
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="src/loader.js"></script>
+    <app-footer
+      data-footer="This website was developed by Tarnav Bhasin, a fellow weeb"
+    ></app-footer>
+  </body>
+</html>

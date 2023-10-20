@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeebList Favorites</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="styles/default-styles.css" />
+  </head>
+  <body>
+    <!-- Navbar component -->
+    <p1-nav data-page="favorites"></p1-nav>
+    <!-- Main Page -->
+    <main class="px-1 py-1">
+      <div class="has-background-black mr-1 p-1">
+        <div class="is-large p-4 is-white has-background-black">
+          <!-- Row #1 -->
+          <app-header data-page="WeebList Favorites"></app-header>
+          <!-- First Webcomponent-->
+
+          <!-- Row #2  -->
+          <div class="box mt-2">
+            <h2 class="subtitle has-text-weight-bold mb-0">Instructions</h2>
+            <ol>
+              <li>Checkout your favorite anime lists below!</li>
+              <li>
+                Once you remove a favorite, refresh the page to clear it from
+                the screen
+              </li>
+              <li>
+                Before you share your Favorites, Please remove any duplicates to
+                avoid double counting
+              </li>
+            </ol>
+          </div>
+
+          <!-- Row #3 -->
+          <div class="box has-background-black">
+            <button
+              title="Clear all the favorites from your list"
+              class="button mr-2 has-text-weight-bold has-text-black is-medium is-warning"
+              id="btn-clear-favorites"
+            >
+              Clear All Favorites
+            </button>
+            <button
+              title="Clear all the data including the favorites list"
+              class="button mr-2 has-text-weight-bold has-text-black is-medium is-danger"
+              id="btn-app-preferences"
+            >
+              Clear All App Data
+            </button>
+            <button
+              title="Share all the animes in your favorites list with the Community!"
+              class="button mr-2 has-text-weight-bold has-text-black is-medium is-primary"
+              id="btn-share"
+            >
+              Share Favorites
+            </button>
+            <div class="is-large p-1">
+              <p id="element-status" class="has-text-white mt-5 mb-2">
+                Favorite some Animes to get started
+              </p>
+              <div class="has-text-white" id="list-favorites">
+                <!-- Favorites go here! -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="src/loader.js"></script>
+    <script type="module" src="src/favorites.js"></script>
+    <app-footer
+      data-footer="Make sure to share your amazing lists!"
+    ></app-footer>
+  </body>
+</html>

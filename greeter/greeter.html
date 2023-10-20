@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Greeter</title>
+    <style>
+      * {
+        font-size: 1.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="my-button">Click Me!</button>
+    <input id="input-firstname" placeholder="Type in your first name" />
+    <input id="input-lastname" placeholder="Type in your last name" />
+    <p id="output">???</p>
+    <script>
+      "use strict";
+      window.onload = init;
+
+      function init() {
+        let button = document.querySelector("#my-button");
+        button.onclick = sayHello;
+
+        //document.querySelector("#my-button").addEventListener("click", sayHello);
+
+        // 1 - get a reference to the button
+        // 2 - add a click event to button that calls a `sayHello` function
+        // 3 - create a `sayHello()` function
+
+        function sayHello() {
+          let firstName = document.querySelector("#input-firstname").value;
+          let lastName = document.querySelector("#input-lastname").value;
+
+          firstName = firstName.trim();
+          lastName = lastName.trim();
+
+          if (firstName.length === 0) {
+            firstName = "Chad";
+          }
+
+          if (lastName.length === 0) {
+            lastName = "White";
+          }
+          document.querySelector("#output").innerHTML = ` Hello
+          ${firstName}  ${lastName}`;
+
+          console.log(name);
+        }
+      }
+      // 3A - get name of person from the <input>
+      // 3B - get a reference to the #output <p>
+      // 3C - update HTML of #output <p>
+    </script>
+  </body>
+</html>
